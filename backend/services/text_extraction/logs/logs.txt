@@ -1,0 +1,10 @@
+[23-Jul-2021 : 22:13:52] INFO [werkzeug._log:113]  * Running on http://localhost:8080/ (Press CTRL+C to quit)
+[23-Jul-2021 : 22:13:59] INFO [root.info:27] INFO : GET request received:http://localhost:8080/
+[23-Jul-2021 : 22:13:59] INFO [werkzeug._log:113] 127.0.0.1 - - [23/Jul/2021 22:13:59] "[37mGET / HTTP/1.1[0m" 200 -
+[23-Jul-2021 : 22:16:03] INFO [werkzeug._log:113]  * Running on http://localhost:8080/ (Press CTRL+C to quit)
+[23-Jul-2021 : 22:16:06] INFO [root.info:27] INFO : GET request received:http://localhost:8080/
+[23-Jul-2021 : 22:16:06] INFO [werkzeug._log:113] 127.0.0.1 - - [23/Jul/2021 22:16:06] "[37mGET / HTTP/1.1[0m" 200 -
+[23-Jul-2021 : 22:16:26] INFO [root.info:27] INFO : GET request received:http://localhost:8080/text_extraction/api/v1/
+[23-Jul-2021 : 22:16:26] INFO [werkzeug._log:113] 127.0.0.1 - - [23/Jul/2021 22:16:26] "[33mGET /text_extraction/api/v1/ HTTP/1.1[0m" 404 -
+[23-Jul-2021 : 22:16:35] INFO [root.info:27] INFO : GET request received:http://localhost:8080/text_extraction/api/v1/predict
+[23-Jul-2021 : 22:16:35] INFO [werkzeug._log:113] 127.0.0.1 - - [23/Jul/2021 22:16:35] "[37mGET /text_extraction/api/v1/predict HTTP/1.1[0m" 200 -

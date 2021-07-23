@@ -1,12 +1,10 @@
 import logging
-import sys
-
-from backend.common.logging.logger import Logger
+# from backend.common.logging.logger import Logger
 
 
-class ConsoleLogger(Logger):
+class ConsoleLogger:
     def __init__(self, filename='logs.txt', logging_level=logging.INFO):
-        super(ConsoleLogger, self).__init__()
+        # super(ConsoleLogger, self).__init__()
         if logging_level not in [logging.DEBUG, logging.INFO, logging.WARNING, logging.ERROR, logging.FATAL]:
             raise Exception('Unable to instantiate logger with given exception level')
 
@@ -23,7 +21,7 @@ class ConsoleLogger(Logger):
 
     def debug(self, message, file_id='', context=''):
         self.logger.debug(msg='DEBUG : '+message)
-        # print('DEBUG: ' + message)
+        print('DEBUG: ' + message)
 
     def info(self, message, file_id='', context=''):
         self.logger.info(msg='INFO : ' + message)
