@@ -24,7 +24,7 @@ class Settings:
     WEIGHTS_PATH = APPLICATION_PATH + "ai\\weights\\text_extraction_model.bin"
 
     # setting up logs path
-    LOGS_DIRECTORY = root_path + "backend\\services\\entity_extraction\\logs\\logs.txt"
+    LOGS_DIRECTORY = root_path + "backend\\services\\text_extraction\\logs\\logs.txt"
 
     DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     input_dim = 768
