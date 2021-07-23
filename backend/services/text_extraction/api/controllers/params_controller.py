@@ -11,3 +11,6 @@ class ParamsController(Controller):
 
     def get(self):
         return {'response': 'This is an API endpoint for text extraction using BERT---!!'}
+
+    def post(self):
+        pass
