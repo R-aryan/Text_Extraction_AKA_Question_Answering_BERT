@@ -2,6 +2,7 @@ import os
 
 import torch
 import transformers
+from tokenizers.implementations import BertWordPieceTokenizer
 
 
 class Settings:
@@ -9,7 +10,7 @@ class Settings:
     root_path = os.getcwd().split(PROJ_NAME)[0] + PROJ_NAME + "\\"
     APPLICATION_PATH = root_path + "backend\\services\\text_extraction\\application\\"
     MAX_LEN = 128
-    TRAIN_BATCH_SIZE = 16
+    TRAIN_BATCH_SIZE = 32
     VALID_BATCH_SIZE = 16
     EPOCHS = 10
     RANDOM_STATE = 42
@@ -30,10 +31,15 @@ class Settings:
     input_dim = 768
     bert_model_name = 'bert-base-uncased'
 
-    TOKENIZER = transformers.BertTokenizer.from_pretrained(
-        bert_model_name,
-        do_lower_case=True
+    TOKENIZER = BertWordPieceTokenizer(
+        f"{bert_model_name}/vocab.txt",
+        lowercase=True
     )
+
+    # TOKENIZER = transformers.BertTokenizer.from_pretrained(
+    #     bert_model_name,
+    #     do_lower_case=True
+    # )
 
     DROPOUT = 0.3
     no_decay = ["bias", "LayerNorm.bias", "LayerNorm.weight"]
