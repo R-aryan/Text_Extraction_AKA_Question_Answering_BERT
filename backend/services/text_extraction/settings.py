@@ -40,3 +40,9 @@ class Settings:
 
     seed_value = 42
     test_size = 0.1
+
+    sentiment_id = {
+        'positive': 3893,
+        'negative': 4997,
+        'neutral': 8699
+    }
