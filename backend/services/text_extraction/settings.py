@@ -18,7 +18,7 @@ class Settings:
     VAL_NUM_WORKERS = 2
 
     # training data directory
-    TRAIN_DATA = APPLICATION_PATH + "ai\\training\\data\\ner_dataset.csv"
+    TRAIN_DATA = APPLICATION_PATH + "ai\\training\\data\\train.csv"
 
     # weights path
     WEIGHTS_PATH = APPLICATION_PATH + "ai\\weights\\text_extraction_model.bin"
