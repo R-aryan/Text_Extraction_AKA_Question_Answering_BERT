@@ -22,7 +22,9 @@ class Settings:
     TRAIN_DATA = APPLICATION_PATH + "ai\\training\\data\\train.csv"
 
     # weights path
-    WEIGHTS_PATH = APPLICATION_PATH + "ai\\weights\\text_extraction_model.bin"
+    WEIGHTS_PATH = APPLICATION_PATH + "ai\\weights\\bert_base_uncased\\text_extraction_model.bin"
+    # vocab path
+    VOCAB_PATH = APPLICATION_PATH + "ai\\weights\\bert_base_uncased\\vocab.txt"
 
     # setting up logs path
     LOGS_DIRECTORY = root_path + "backend\\services\\text_extraction\\logs\\logs.txt"
@@ -32,7 +34,7 @@ class Settings:
     bert_model_name = 'bert-base-uncased'
 
     TOKENIZER = BertWordPieceTokenizer(
-        f"{bert_model_name}/vocab.txt",
+        f"{VOCAB_PATH}",
         lowercase=True
     )
 
