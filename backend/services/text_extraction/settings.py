@@ -24,8 +24,8 @@ class Settings:
     # weights path
     WEIGHTS_PATH = APPLICATION_PATH + "ai\\weights\\bert_base_uncased\\text_extraction_model.bin"
 
-    # weights path
-    MODEL_PATH = APPLICATION_PATH + "ai\\weights\\bert_base_uncased\\pytorch_model.bin"
+    # BERT path
+    BERT_PATH = APPLICATION_PATH + "ai\\weights\\bert_base_uncased\\pytorch_model.bin"
 
     # vocab path
     VOCAB_PATH = APPLICATION_PATH + "ai\\weights\\bert_base_uncased\\vocab.txt"
@@ -35,6 +35,7 @@ class Settings:
 
     DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     input_dim = 768
+    output_dim = 2
     bert_model_name = 'bert-base-uncased'
 
     TOKENIZER = BertWordPieceTokenizer(

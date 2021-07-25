@@ -41,7 +41,7 @@ class TweetDataset:
             'offsets_end': torch.tensor([x for _, x in data["offsets"]], dtype=torch.long)
         }
 
-
+#
 # if __name__ == "__main__":
 #     df = pd.read_csv(Settings.TRAIN_DATA)
 #     df = df.dropna().reset_index(drop=True)
