@@ -14,7 +14,7 @@ class Settings:
     VALID_BATCH_SIZE = 16
     EPOCHS = 10
     RANDOM_STATE = 42
-    MODEL_PATH = 'entity_model.bin'
+    # MODEL_PATH = 'entity_model.bin'
     TRAIN_NUM_WORKERS = 4
     VAL_NUM_WORKERS = 2
 
@@ -23,6 +23,10 @@ class Settings:
 
     # weights path
     WEIGHTS_PATH = APPLICATION_PATH + "ai\\weights\\bert_base_uncased\\text_extraction_model.bin"
+
+    # weights path
+    MODEL_PATH = APPLICATION_PATH + "ai\\weights\\bert_base_uncased\\pytorch_model.bin"
+
     # vocab path
     VOCAB_PATH = APPLICATION_PATH + "ai\\weights\\bert_base_uncased\\vocab.txt"
 
