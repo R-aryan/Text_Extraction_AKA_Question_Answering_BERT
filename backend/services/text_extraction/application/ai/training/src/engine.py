@@ -133,10 +133,6 @@ class Engine:
             outputs_start = torch.softmax(outputs_start, dim=1).cpu().detach().numpy()
             outputs_end = torch.softmax(outputs_end, dim=1).cpu().detach().numpy()
             jaccard_scores = []
-
-            outputs_start = torch.softmax(outputs_start, dim=1).cpu().detach().numpy()
-            outputs_end = torch.softmax(outputs_end, dim=1).cpu().detach().numpy()
-            jaccard_scores = []
             for px, tweet in enumerate(orig_tweet):
                 selected_tweet = orig_selected[px]
                 tweet_sentiment = sentiment[px]
@@ -154,3 +150,59 @@ class Engine:
             jaccards.update(np.mean(jaccard_scores), ids.size(0))
             losses.update(loss.item(), ids.size(0))
             tk0.set_postfix(loss=losses.avg, jaccard=jaccards.avg)
+
+    def eval_fn(self, data_loader, model, device):
+        model.eval()
+        losses = utils.AverageMeter()
+        jaccards = utils.AverageMeter()
+
+        with torch.no_grad():
+            tk0 = tqdm(data_loader, total=len(data_loader))
+            for bi, d in enumerate(tk0):
+                ids = d["ids"]
+                token_type_ids = d["token_type_ids"]
+                mask = d["mask"]
+                sentiment = d["sentiment"]
+                orig_selected = d["orig_selected"]
+                orig_tweet = d["orig_tweet"]
+                targets_start = d["targets_start"]
+                targets_end = d["targets_end"]
+                offsets_start = d["offsets_start"].numpy()
+                offsets_end = d["offsets_end"].numpy()
+
+                # moving tensors to device
+                ids = ids.to(device, dtype=torch.long)
+                token_type_ids = token_type_ids.to(device, dtype=torch.long)
+                mask = mask.to(device, dtype=torch.long)
+                targets_start = targets_start.to(device, dtype=torch.long)
+                targets_end = targets_end.to(device, dtype=torch.long)
+
+                outputs_start, outputs_end = model(
+                    ids=ids,
+                    mask=mask,
+                    token_type_ids=token_type_ids
+                )
+                loss = self.loss_fn(outputs_start, outputs_end, targets_start, targets_end)
+                outputs_start = torch.softmax(outputs_start, dim=1).cpu().detach().numpy()
+                outputs_end = torch.softmax(outputs_end, dim=1).cpu().detach().numpy()
+                jaccard_scores = []
+                for px, tweet in enumerate(orig_tweet):
+                    selected_tweet = orig_selected[px]
+                    tweet_sentiment = sentiment[px]
+                    jaccard_score = self.calculate_jaccard_score(
+                        original_tweet=tweet,
+                        target_string=selected_tweet,
+                        sentiment_val=tweet_sentiment,
+                        idx_start=np.argmax(outputs_start[px, :]),
+                        idx_end=np.argmax(outputs_end[px, :]),
+                        offsets_start=offsets_start[px, :],
+                        offsets_end=offsets_end[px, :]
+                    )
+                    jaccard_scores.append(jaccard_score)
+
+                jaccards.update(np.mean(jaccard_scores), ids.size(0))
+                losses.update(loss.item(), ids.size(0))
+                tk0.set_postfix(loss=losses.avg, jaccard=jaccards.avg)
+
+        print(f"Jaccard score = {jaccards.avg}")
+        return jaccards.avg
