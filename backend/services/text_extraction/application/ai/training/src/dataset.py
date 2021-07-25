@@ -6,7 +6,7 @@ from services.text_extraction.application.ai.training.src.preprocess import Prep
 from services.text_extraction.settings import Settings
 
 
-class TweetDataset:
+class TextExtractionDataset:
     def __init__(self, tweet, sentiment, selected_text):
         self.settings = Settings
         self.preprocess = Preprocess()
@@ -45,5 +45,6 @@ class TweetDataset:
 # if __name__ == "__main__":
 #     df = pd.read_csv(Settings.TRAIN_DATA)
 #     df = df.dropna().reset_index(drop=True)
-#     dset = TweetDataset(tweet=df.text.values, sentiment=df.sentiment.values, selected_text=df.selected_text.values)
+#     dset = TextExtractionDataset(tweet=df.text.values, sentiment=df.sentiment.values,
+#                                     selected_text=df.selected_text.values)
 #     print(dset[100])

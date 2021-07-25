@@ -12,10 +12,9 @@ class Engine:
         pass
 
     def loss_fn(self, start_logits, end_logits, start_positions, end_positions):
-        loss_fct = nn.CrossEntropyLoss()
-        start_loss = loss_fct(start_logits, start_positions)
-        end_loss = loss_fct(end_logits, end_positions)
-        total_loss = (start_loss + end_loss)
+        l1 = nn.BCEWithLogitsLoss()(start_logits, start_positions)
+        l2 = nn.BCEWithLogitsLoss()(end_logits, end_positions)
+        total_loss = l1 + l2
         return total_loss
 
     def set_seed(self, seed_value=42):
@@ -77,7 +76,6 @@ class Engine:
     def train_fn(self, data_loader, model, optimizer, device, schedular):
         print("Starting training...\n")
         model.train()
-        model.zero_grad()
         losses = utils.AverageMeter()
         jaccards = utils.AverageMeter()
         tk0 = tqdm(data_loader, total=len(data_loader))
@@ -85,8 +83,6 @@ class Engine:
             ids = d["ids"]
             token_type_ids = d["token_type_ids"]
             mask = d["mask"]
-            targets_start = d["targets_start"]
-            targets_end = d["targets_end"]
             sentiment = d["sentiment"]
             orig_selected = d["orig_selected"]
             orig_tweet = d["orig_tweet"]
@@ -183,8 +179,8 @@ class Engine:
                     token_type_ids=token_type_ids
                 )
                 loss = self.loss_fn(outputs_start, outputs_end, targets_start, targets_end)
-                outputs_start = torch.softmax(outputs_start, dim=1).cpu().detach().numpy()
-                outputs_end = torch.softmax(outputs_end, dim=1).cpu().detach().numpy()
+                outputs_start = torch.sigmoid(outputs_start).cpu().detach().numpy()
+                outputs_end = torch.sigmoid(outputs_end).cpu().detach().numpy()
                 jaccard_scores = []
                 for px, tweet in enumerate(orig_tweet):
                     selected_tweet = orig_selected[px]
