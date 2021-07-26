@@ -12,9 +12,10 @@ class Engine:
         pass
 
     def loss_fn(self, start_logits, end_logits, start_positions, end_positions):
-        l1 = nn.BCEWithLogitsLoss()(start_logits, start_positions)
-        l2 = nn.BCEWithLogitsLoss()(end_logits, end_positions)
-        total_loss = l1 + l2
+        loss_fct = nn.CrossEntropyLoss()
+        start_loss = loss_fct(start_logits, start_positions)
+        end_loss = loss_fct(end_logits, end_positions)
+        total_loss = (start_loss + end_loss)
         return total_loss
 
     def set_seed(self, seed_value=42):
@@ -106,8 +107,8 @@ class Engine:
             model.zero_grad()
 
             outputs_start, outputs_end = model(
-                ids=ids,
-                mask=mask,
+                input_ids=ids,
+                attention_mask=mask,
                 token_type_ids=token_type_ids,
             )
 
@@ -151,18 +152,6 @@ class Engine:
         model.eval()
         losses = utils.AverageMeter()
         jaccards = utils.AverageMeter()
-        all_outputs = []
-        fin_outputs_start = []
-        fin_outputs_end = []
-        fin_outputs_start2 = []
-        fin_outputs_end2 = []
-        fin_tweet_tokens = []
-        fin_padding_lens = []
-        fin_orig_selected = []
-        fin_orig_sentiment = []
-        fin_orig_tweet = []
-        fin_tweet_token_ids = []
-
         with torch.no_grad():
             tk0 = tqdm(data_loader, total=len(data_loader))
             for bi, d in enumerate(tk0):
@@ -177,7 +166,6 @@ class Engine:
                 offsets_start = d["offsets_start"].numpy()
                 offsets_end = d["offsets_end"].numpy()
 
-                # moving tensors to device
                 ids = ids.to(device, dtype=torch.long)
                 token_type_ids = token_type_ids.to(device, dtype=torch.long)
                 mask = mask.to(device, dtype=torch.long)
@@ -190,33 +178,22 @@ class Engine:
                     token_type_ids=token_type_ids
                 )
                 loss = self.loss_fn(outputs_start, outputs_end, targets_start, targets_end)
-                outputs_start = torch.sigmoid(outputs_start).cpu().detach().numpy()
-                outputs_end = torch.sigmoid(outputs_end).cpu().detach().numpy()
+                outputs_start = torch.softmax(outputs_start, dim=1).cpu().detach().numpy()
+                outputs_end = torch.softmax(outputs_end, dim=1).cpu().detach().numpy()
                 jaccard_scores = []
-                fin_outputs_start.append(torch.sigmoid(outputs_start).cpu().detach().numpy())
-                fin_outputs_end.append(torch.sigmoid(outputs_end).cpu().detach().numpy())
-
-                fin_padding_lens.extend(padding_len.cpu().detach().numpy().tolist())
-                fin_tweet_token_ids.append(ids.cpu().detach().numpy().tolist())
-
-                fin_tweet_tokens.extend(tweet_tokens)
-                fin_orig_sentiment.extend(orig_sentiment)
-                fin_orig_selected.extend(orig_selected)
-                fin_orig_tweet.extend(orig_tweet)
-
-                # for px, tweet in enumerate(orig_tweet):
-                #     selected_tweet = orig_selected[px]
-                #     tweet_sentiment = sentiment[px]
-                #     jaccard_score = self.calculate_jaccard_score(
-                #         original_tweet=tweet,
-                #         target_string=selected_tweet,
-                #         sentiment_val=tweet_sentiment,
-                #         idx_start=np.argmax(outputs_start[px, :]),
-                #         idx_end=np.argmax(outputs_end[px, :]),
-                #         offsets_start=offsets_start[px, :],
-                #         offsets_end=offsets_end[px, :]
-                #     )
-                #     jaccard_scores.append(jaccard_score)
+                for px, tweet in enumerate(orig_tweet):
+                    selected_tweet = orig_selected[px]
+                    tweet_sentiment = sentiment[px]
+                    jaccard_score = self.calculate_jaccard_score(
+                        original_tweet=tweet,
+                        target_string=selected_tweet,
+                        sentiment_val=tweet_sentiment,
+                        idx_start=np.argmax(outputs_start[px, :]),
+                        idx_end=np.argmax(outputs_end[px, :]),
+                        offsets_start=offsets_start[px, :],
+                        offsets_end=offsets_end[px, :]
+                    )
+                    jaccard_scores.append(jaccard_score)
 
                 jaccards.update(np.mean(jaccard_scores), ids.size(0))
                 losses.update(loss.item(), ids.size(0))
@@ -224,3 +201,4 @@ class Engine:
 
         print(f"Jaccard score = {jaccards.avg}")
         return jaccards.avg
+

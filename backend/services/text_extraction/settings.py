@@ -10,7 +10,7 @@ class Settings:
     root_path = os.getcwd().split(PROJ_NAME)[0] + PROJ_NAME + "\\"
     APPLICATION_PATH = root_path + "backend\\services\\text_extraction\\application\\"
     MAX_LEN = 128
-    TRAIN_BATCH_SIZE = 32
+    TRAIN_BATCH_SIZE = 2
     VALID_BATCH_SIZE = 16
     EPOCHS = 10
     RANDOM_STATE = 42
@@ -28,7 +28,7 @@ class Settings:
     WEIGHTS_PATH = APPLICATION_PATH + "ai\\weights\\bert_base_uncased\\text_extraction_model.bin"
 
     # BERT path
-    BERT_PATH = APPLICATION_PATH + "ai\\weights\\bert_base_uncased\\pytorch_model.bin"
+    BERT_PATH = APPLICATION_PATH + "ai\\weights\\bert_base_uncased"
 
     # vocab path
     VOCAB_PATH = APPLICATION_PATH + "ai\\weights\\bert_base_uncased\\vocab.txt"

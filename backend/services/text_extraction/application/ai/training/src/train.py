@@ -1,8 +1,9 @@
 import numpy as np
 import pandas as pd
+import transformers
 from sklearn import model_selection
 
-from services.text_extraction.application.ai.model import TextExtractionModel
+from services.text_extraction.application.ai.model import BERTBaseUncased
 from services.text_extraction.application.ai.training.src import utils
 from services.text_extraction.application.ai.training.src.dataset import TextExtractionDataset
 from services.text_extraction.application.ai.training.src.engine import Engine
@@ -33,6 +34,7 @@ class Train:
         self.total_steps = None
         self.train_data_loader = None
         self.validation_data_loader = None
+        self.model_config = None
 
     def optimizer_params(self):
         self.param_optimizer = list(self.bert_text_model.named_parameters())
@@ -53,7 +55,10 @@ class Train:
 
     def __initialize(self):
         # Instantiate Bert Classifier
-        self.bert_text_model = TextExtractionModel()
+        # self.model_config = transformers.BertConfig.from_pretrained(self.settings.BERT_PATH)
+        # self.model_config.output_hidden_states = True
+        # self.bert_text_model = BERTBaseUncased(conf=self.model_config)
+        self.bert_text_model = BERTBaseUncased()
         self.bert_text_model.to(self.settings.DEVICE)
         self.optimizer_params()
 
@@ -92,13 +97,13 @@ class Train:
 
         # creating Data Loaders
         # train data loader
-        self.train_data_loader = self.create_data_loaders(tweet=df_train.tweet.values,
+        self.train_data_loader = self.create_data_loaders(tweet=df_train.text.values,
                                                           sentiment=df_train.sentiment.values,
                                                           selected_text=df_train.selected_text.values,
                                                           batch_size=self.settings.TRAIN_BATCH_SIZE,
                                                           num_workers=self.settings.TRAIN_NUM_WORKERS)
         # validation data loader
-        self.validation_data_loader = self.create_data_loaders(tweet=df_valid.tweet.values,
+        self.validation_data_loader = self.create_data_loaders(tweet=df_valid.text.values,
                                                                sentiment=df_valid.sentiment.values,
                                                                selected_text=df_valid.selected_text.values,
                                                                batch_size=self.settings.TRAIN_BATCH_SIZE,
