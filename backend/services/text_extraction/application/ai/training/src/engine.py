@@ -12,10 +12,9 @@ class Engine:
         pass
 
     def loss_fn(self, start_logits, end_logits, start_positions, end_positions):
-        loss_fct = nn.CrossEntropyLoss()
-        start_loss = loss_fct(start_logits, start_positions)
-        end_loss = loss_fct(end_logits, end_positions)
-        total_loss = (start_loss + end_loss)
+        l1 = nn.BCEWithLogitsLoss()(start_logits,start_positions)
+        l2 = nn.BCEWithLogitsLoss()(end_logits, end_positions)
+        total_loss = (l1+l2)
         return total_loss
 
     def set_seed(self, seed_value=42):
@@ -97,8 +96,8 @@ class Engine:
             ids = ids.to(device, dtype=torch.long)
             token_type_ids = token_type_ids.to(device, dtype=torch.long)
             mask = mask.to(device, dtype=torch.long)
-            targets_start = targets_start.to(device, dtype=torch.long)
-            targets_end = targets_end.to(device, dtype=torch.long)
+            targets_start = targets_start.to(device, dtype=torch.float)
+            targets_end = targets_end.to(device, dtype=torch.float)
 
             # Always clear any previously calculated gradients before performing a
             # backward pass. PyTorch doesn't do this automatically because
@@ -152,34 +151,56 @@ class Engine:
         model.eval()
         losses = utils.AverageMeter()
         jaccards = utils.AverageMeter()
+        all_outputs = []
+        fin_outputs_start = []
+        fin_outputs_end = []
+        fin_tweet_tokens = []
+        fin_padding_lens = []
+        fin_orig_selected = []
+        fin_orig_sentiment = []
+        fin_orig_tweet = []
+        fin_tweet_token_ids = []
         with torch.no_grad():
             tk0 = tqdm(data_loader, total=len(data_loader))
             for bi, d in enumerate(tk0):
                 ids = d["ids"]
                 token_type_ids = d["token_type_ids"]
                 mask = d["mask"]
+                tweet_tokens = d["tweet_tokens"]
+                padding_len = d["padding_len"]
                 sentiment = d["sentiment"]
                 orig_selected = d["orig_selected"]
+                orig_sentiment = d["orig_sentiment"]
                 orig_tweet = d["orig_tweet"]
-                targets_start = d["targets_start"]
-                targets_end = d["targets_end"]
-                offsets_start = d["offsets_start"].numpy()
-                offsets_end = d["offsets_end"].numpy()
 
                 ids = ids.to(device, dtype=torch.long)
                 token_type_ids = token_type_ids.to(device, dtype=torch.long)
                 mask = mask.to(device, dtype=torch.long)
-                targets_start = targets_start.to(device, dtype=torch.long)
-                targets_end = targets_end.to(device, dtype=torch.long)
+                targets_start = targets_start.to(device, dtype=torch.float)
+                targets_end = targets_end.to(device, dtype=torch.float)
+                sentiment = sentiment.to(device, dtype=torch.float)
 
                 outputs_start, outputs_end = model(
-                    ids=ids,
-                    mask=mask,
+                    input_ids=ids,
+                    attention_mask=mask,
                     token_type_ids=token_type_ids
                 )
                 loss = self.loss_fn(outputs_start, outputs_end, targets_start, targets_end)
-                outputs_start = torch.softmax(outputs_start, dim=1).cpu().detach().numpy()
-                outputs_end = torch.softmax(outputs_end, dim=1).cpu().detach().numpy()
+
+                fin_outputs_start.append(torch.sigmoid(outputs_start).cpu().detach().numpy())
+                fin_outputs_end.append(torch.sigmoid(outputs_end).cpu().detach().numpy())
+
+                fin_padding_lens.extend(padding_len.cpu().detach().numpy().tolist())
+                fin_tweet_token_ids.append(ids.cpu().detach().numpy().tolist())
+
+                fin_tweet_tokens.extend(tweet_tokens)
+                fin_orig_sentiment.extend(orig_sentiment)
+                fin_orig_selected.extend(orig_selected)
+                fin_orig_tweet.extend(orig_tweet)
+
+            fin_outputs_start = np.vstack(fin_outputs_start)
+            fin_outputs_end = np.vstack(fin_outputs_end)
+
                 jaccard_scores = []
                 for px, tweet in enumerate(orig_tweet):
                     selected_tweet = orig_selected[px]
