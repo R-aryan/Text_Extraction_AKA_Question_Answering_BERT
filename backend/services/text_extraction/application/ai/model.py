@@ -9,7 +9,7 @@ class BERTBaseUncased(nn.Module):
     def __init__(self):
         super(BERTBaseUncased, self).__init__()
         self.settings = Settings
-        self.bert = transformers.BertModel.from_pretrained(self.settings.BERT_PATH, return_dict=False)
+        self.bert = transformers.BertModel.from_pretrained(self.settings.bert_model_name, return_dict=False)
         self.l0 = nn.Linear(self.settings.input_dim, self.settings.output_dim)
 
     def forward(self, input_ids, attention_mask, token_type_ids):
