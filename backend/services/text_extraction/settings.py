@@ -10,7 +10,7 @@ class Settings:
     root_path = os.getcwd().split(PROJ_NAME)[0] + PROJ_NAME + "\\"
     APPLICATION_PATH = root_path + "backend\\services\\text_extraction\\application\\"
     MAX_LEN = 128
-    TRAIN_BATCH_SIZE = 2
+    TRAIN_BATCH_SIZE = 32
     VALID_BATCH_SIZE = 16
     EPOCHS = 10
     RANDOM_STATE = 42

@@ -89,8 +89,6 @@ class Engine:
             orig_tweet = d["orig_tweet"]
             targets_start = d["targets_start"]
             targets_end = d["targets_end"]
-            offsets_start = d["offsets_start"].numpy()
-            offsets_end = d["offsets_end"].numpy()
 
             # moving tensors to device
 

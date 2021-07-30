@@ -81,8 +81,8 @@ class Train:
 
     def load_data(self, csv_data_path):
         df = pd.read_csv(csv_data_path).dropna().reset_index(drop=True)
-        df['text'] = df['text'].apply(lambda x: self.preprocess.clean_text(x))
-        df['selected_text'] = df['selected_text'].apply(lambda x: self.preprocess.clean_text(x))
+        # df['text'] = df['text'].apply(lambda x: self.preprocess.clean_text(x))
+        # df['selected_text'] = df['selected_text'].apply(lambda x: self.preprocess.clean_text(x))
 
         df_train, df_valid = model_selection.train_test_split(
             df,
