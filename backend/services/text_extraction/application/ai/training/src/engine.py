@@ -127,26 +127,8 @@ class Engine:
             # Update the learning rate
             schedular.step()
 
-            outputs_start = torch.softmax(outputs_start, dim=1).cpu().detach().numpy()
-            outputs_end = torch.softmax(outputs_end, dim=1).cpu().detach().numpy()
-            jaccard_scores = []
-            for px, tweet in enumerate(orig_tweet):
-                selected_tweet = orig_selected[px]
-                tweet_sentiment = sentiment[px]
-                jaccard_score = self.calculate_jaccard_score(
-                    original_tweet=tweet,
-                    target_string=selected_tweet,
-                    sentiment_val=tweet_sentiment,
-                    idx_start=np.argmax(outputs_start[px, :]),
-                    idx_end=np.argmax(outputs_end[px, :]),
-                    offsets_start=offsets_start[px, :],
-                    offsets_end=offsets_end[px, :]
-                )
-                jaccard_scores.append(jaccard_score)
-
-            jaccards.update(np.mean(jaccard_scores), ids.size(0))
             losses.update(loss.item(), ids.size(0))
-            tk0.set_postfix(loss=losses.avg, jaccard=jaccards.avg)
+            tk0.set_postfix(loss=losses.avg)
 
     def eval_fn(self, data_loader, model, device):
         model.eval()
@@ -263,5 +245,5 @@ class Engine:
                 jaccard_scores.append(jac)
 
         mean_jac = np.mean(jaccard_scores)
-        print(f"Jaccard score = {mean_jac}")
+        # print(f"Jaccard score = {mean_jac}")
         return mean_jac
