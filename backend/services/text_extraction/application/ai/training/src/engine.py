@@ -153,6 +153,8 @@ class Engine:
                 orig_selected = d["orig_selected"]
                 orig_sentiment = d["orig_sentiment"]
                 orig_tweet = d["orig_tweet"]
+                targets_start = d["targets_start"]
+                targets_end = d["targets_end"]
 
                 ids = ids.to(device, dtype=torch.long)
                 token_type_ids = token_type_ids.to(device, dtype=torch.long)

@@ -25,7 +25,7 @@ class Settings:
     TEST_DATA = APPLICATION_PATH + "ai\\training\\data\\test.csv"
 
     # weights path
-    WEIGHTS_PATH = APPLICATION_PATH + "ai\\weights\\bert_base_uncased\\text_extraction_model.bin"
+    WEIGHTS_PATH = APPLICATION_PATH + "ai\\weights\\trained_weights\\text_extraction_model.bin"
 
     # BERT path
     BERT_PATH = APPLICATION_PATH + "ai\\weights\\bert_base_uncased"
