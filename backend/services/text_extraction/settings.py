@@ -62,3 +62,7 @@ class Settings:
         'negative': 4997,
         'neutral': 8699
     }
+
+    threshold = 0.3
+
+    SPECIAL_TOKENS = ("[CLS]", "[SEP]")

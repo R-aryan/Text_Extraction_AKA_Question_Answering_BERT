@@ -3,18 +3,19 @@ import torch
 import torch.nn as nn
 from tqdm import tqdm
 import numpy as np
-
+import string
 from services.text_extraction.application.ai.training.src import utils
+from services.text_extraction.settings import Settings
 
 
 class Engine:
     def __init__(self):
-        pass
+        self.settings = Settings
 
     def loss_fn(self, start_logits, end_logits, start_positions, end_positions):
-        l1 = nn.BCEWithLogitsLoss()(start_logits,start_positions)
+        l1 = nn.BCEWithLogitsLoss()(start_logits, start_positions)
         l2 = nn.BCEWithLogitsLoss()(end_logits, end_positions)
-        total_loss = (l1+l2)
+        total_loss = (l1 + l2)
         return total_loss
 
     def set_seed(self, seed_value=42):
@@ -198,28 +199,69 @@ class Engine:
                 fin_orig_selected.extend(orig_selected)
                 fin_orig_tweet.extend(orig_tweet)
 
+                losses.update(loss.item(), ids.size(0))
+                tk0.set_postfix(loss=losses.avg)
+
             fin_outputs_start = np.vstack(fin_outputs_start)
             fin_outputs_end = np.vstack(fin_outputs_end)
+            fin_tweet_token_ids = np.vstack(fin_tweet_token_ids)
+            threshold = self.settings.threshold
 
-                jaccard_scores = []
-                for px, tweet in enumerate(orig_tweet):
-                    selected_tweet = orig_selected[px]
-                    tweet_sentiment = sentiment[px]
-                    jaccard_score = self.calculate_jaccard_score(
-                        original_tweet=tweet,
-                        target_string=selected_tweet,
-                        sentiment_val=tweet_sentiment,
-                        idx_start=np.argmax(outputs_start[px, :]),
-                        idx_end=np.argmax(outputs_end[px, :]),
-                        offsets_start=offsets_start[px, :],
-                        offsets_end=offsets_end[px, :]
-                    )
-                    jaccard_scores.append(jaccard_score)
+            jaccard_scores = []
 
-                jaccards.update(np.mean(jaccard_scores), ids.size(0))
-                losses.update(loss.item(), ids.size(0))
-                tk0.set_postfix(loss=losses.avg, jaccard=jaccards.avg)
+            for j in range(len(fin_tweet_tokens)):
+                target_string = fin_orig_selected[j]
+                tweet_tokens = fin_tweet_tokens[j]
+                padding_len = fin_padding_lens[j]
+                original_tweet = fin_orig_tweet[j]
+                sentiment_val = fin_orig_sentiment[j]
 
-        print(f"Jaccard score = {jaccards.avg}")
-        return jaccards.avg
+                if padding_len > 0:
+                    mask_start = fin_outputs_start[j, :][:-padding_len] >= threshold
+                    mask_end = fin_outputs_end[j, :][:-padding_len] >= threshold
 
+                else:
+                    mask_start = fin_outputs_start[j, 3:-1] >= threshold
+                    mask_end = fin_outputs_end[j, 3:-1] >= threshold
+
+                mask = [0] * len(mask_start)
+                idx_start = np.nonzero(mask_start)[0]
+                idx_end = np.nonzero(mask_end)[0]
+
+                if len(idx_start) > 0:
+                    idx_start = idx_start[0]
+                    if len(idx_end) > 0:
+                        idx_end = idx_end[0]
+                    else:
+                        idx_end = idx_start
+                else:
+                    idx_start = 0
+                    idx_end = 0
+
+                for mj in range(idx_start, idx_end + 1):
+                    mask[mj] = 1
+
+                output_tokens = [x for p, x in enumerate(tweet_tokens.split()) if mask[p] == 1]
+                output_tokens = [x for x in output_tokens if x not in self.settings.SPECIAL_TOKENS]
+
+                final_output = ""
+                for ot in output_tokens:
+                    if ot.startswith("##"):
+                        final_output += ot[2:]
+                    elif len(ot) == 1 and ot in string.punctuation:
+                        final_output += ot
+                    else:
+                        final_output += " " + ot
+
+                final_output = final_output.strip()
+
+                if sentiment == "neutral" or len(original_tweet.split())<4:
+                    final_output = original_tweet
+
+                jac = utils.jaccard(target_string.strip(),final_output.strip())
+
+                jaccard_scores.append(jac)
+
+        mean_jac = np.mean(jaccard_scores)
+        print(f"Jaccard score = {mean_jac}")
+        return mean_jac

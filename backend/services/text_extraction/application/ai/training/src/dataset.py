@@ -106,9 +106,9 @@ class TextExtractionDataset:
         }
 
 
-if __name__ == "__main__":
-    df = pd.read_csv(Settings.TRAIN_DATA)
-    df = df.dropna().reset_index(drop=True)
-    dset = TextExtractionDataset(tweet=df.text.values, sentiment=df.sentiment.values,
-                                 selected_text=df.selected_text.values)
-    print(dset[100])
+# if __name__ == "__main__":
+#     df = pd.read_csv(Settings.TRAIN_DATA)
+#     df = df.dropna().reset_index(drop=True)
+#     dset = TextExtractionDataset(tweet=df.text.values, sentiment=df.sentiment.values,
+#                                  selected_text=df.selected_text.values)
+#     print(dset[100])
