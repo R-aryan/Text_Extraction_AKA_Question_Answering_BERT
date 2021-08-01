@@ -35,9 +35,9 @@ class PredictionManager:
         try:
             self.logger.info(message="Performing prediction on the given data.")
             test_dataset = TextExtractionDataset(
-                tweet=data['sentence'],
-                sentiment=data['sentiment'],
-                selected_text=data['sentence']
+                tweet=[data['sentence']],
+                sentiment=[data['sentiment']],
+                selected_text=[data['sentence']]
             )
 
             with torch.no_grad():
@@ -92,13 +92,13 @@ class PredictionManager:
         fin_outputs_start.append(torch.sigmoid(outputs_start).cpu().detach().numpy())
         fin_outputs_end.append(torch.sigmoid(outputs_end).cpu().detach().numpy())
 
-        fin_padding_lens.extend(padding_len.cpu().detach().numpy().tolist())
+        fin_padding_lens.append(padding_len.cpu().detach().numpy().tolist())
         fin_tweet_token_ids.append(ids.cpu().detach().numpy().tolist())
 
-        fin_tweet_tokens.extend(tweet_tokens)
-        fin_orig_sentiment.extend(orig_sentiment)
-        fin_orig_selected.extend(orig_selected)
-        fin_orig_tweet.extend(orig_tweet)
+        fin_tweet_tokens.append(tweet_tokens)
+        fin_orig_sentiment.append(orig_sentiment)
+        fin_orig_selected.append(orig_selected)
+        fin_orig_tweet.append(orig_tweet)
 
         fin_outputs_start = np.vstack(fin_outputs_start)
         fin_outputs_end = np.vstack(fin_outputs_end)
@@ -152,6 +152,7 @@ class PredictionManager:
         return all_outputs
 
     def run_inference(self, data):
-        self.logger.info("Received " + data + " for inference--!!")
+        self.logger.info("Received " + str(data) + " for inference--!!")
         outputs_start, outputs_end, d = self.__predict(data)
         result = self.__post_process(outputs_start, outputs_end, d)
+        return result

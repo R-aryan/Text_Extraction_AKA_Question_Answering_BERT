@@ -22,6 +22,9 @@ class Settings:
     # test data directory
     TEST_DATA = APPLICATION_PATH + "ai\\training\\data\\test.csv"
 
+    # submission data directory
+    # SUBMISSION_DATA = APPLICATION_PATH + "ai\\training\\data\\submission.csv"
+
     # weights path
     WEIGHTS_PATH = APPLICATION_PATH + "ai\\weights\\trained_weights\\text_extraction_model.bin"
 
