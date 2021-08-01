@@ -1,0 +1,4 @@
+[01-Aug-2021 : 20:20:43] INFO [root.info:27] INFO : Loading Bert Base Uncased Model for text extraction.
+[01-Aug-2021 : 20:20:51] INFO [root.info:27] INFO : Bert Base Model Successfully Loaded.
+[01-Aug-2021 : 20:20:56] INFO [root.info:27] INFO : Loading Model trained Weights.
+[01-Aug-2021 : 20:21:07] INFO [root.info:27] INFO : Model Weights loaded Successfully--!!
