@@ -15,8 +15,8 @@ class Controller(Resource):
                                                                                                        "/json")
 
     @staticmethod
-    def response_error(message):
-        return Response(message, status=HttpStatus.internal_server_error_500.value,
+    def response_error(data):
+        return Response(json.dumps(data, cls=ComplexEncoder), status=HttpStatus.internal_server_error_500.value,
                         mimetype="application/json")
 
     @staticmethod

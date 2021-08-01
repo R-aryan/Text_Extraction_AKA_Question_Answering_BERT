@@ -143,15 +143,22 @@ class PredictionManager:
 
         return all_outputs
 
+    def __format_response(self, result, data):
+        response = {
+            'sentence': data['sentence'],
+            'sentiment': data['sentiment'],
+            'extracted_text': result[0]
+        }
+        return response
+
     def run_inference(self, data):
         try:
             self.logger.info("Received " + str(data) + " for inference--!!")
             outputs_start, outputs_end, d = self.__predict(data)
             result = self.__post_process(outputs_start, outputs_end, d)
-            self.logger.info("Response " + str(result) + " returned for input "+str(data)+" successfully--!!")
-            return result
+            self.logger.info("Response " + str(result) + " returned for input " + str(data) + " successfully--!!")
+            return self.__format_response(result, data)
 
         except BaseException as ex:
             self.logger.error(message="Exception Occurred while prediction---!! " + str(ex))
             return str(ex)
-

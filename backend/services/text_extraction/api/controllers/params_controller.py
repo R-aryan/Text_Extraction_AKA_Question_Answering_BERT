@@ -13,8 +13,7 @@ class ParamsController(Controller):
     def post(self):
         try:
             req_json = request.get_json()
-            response = self.predict.run_inference(req_json)
-            result = {'response': response}
+            result = self.predict.run_inference(req_json)
             self.predict.logger.info('Request processed successfully--!!')
             return self.response_ok(result)
         except BaseException as ex:
