@@ -1,7 +1,5 @@
 import os
-
 import torch
-import transformers
 from tokenizers.implementations import BertWordPieceTokenizer
 
 
