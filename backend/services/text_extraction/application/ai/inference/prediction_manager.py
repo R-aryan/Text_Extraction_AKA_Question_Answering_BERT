@@ -148,6 +148,7 @@ class PredictionManager:
             self.logger.info("Received " + str(data) + " for inference--!!")
             outputs_start, outputs_end, d = self.__predict(data)
             result = self.__post_process(outputs_start, outputs_end, d)
+            self.logger.info("Response " + str(result) + " returned for input "+str(data)+" successfully--!!")
             return result
 
         except BaseException as ex:
