@@ -45,12 +45,7 @@ class PredictionManager:
                 ids = d["ids"]
                 token_type_ids = d["token_type_ids"]
                 mask = d["mask"]
-                tweet_tokens = d["tweet_tokens"]
-                padding_len = d["padding_len"]
                 sentiment = d["sentiment"]
-                orig_selected = d["orig_selected"]
-                orig_sentiment = d["orig_sentiment"]
-                orig_tweet = d["orig_tweet"]
 
                 ids = ids.to(self.settings.DEVICE, dtype=torch.long).unsqueeze(0)
                 token_type_ids = token_type_ids.to(self.settings.DEVICE, dtype=torch.long).unsqueeze(0)
@@ -80,11 +75,8 @@ class PredictionManager:
         fin_tweet_token_ids = []
 
         ids = d["ids"]
-        token_type_ids = d["token_type_ids"]
-        mask = d["mask"]
         tweet_tokens = d["tweet_tokens"]
         padding_len = d["padding_len"]
-        sentiment = d["sentiment"]
         orig_selected = d["orig_selected"]
         orig_sentiment = d["orig_sentiment"]
         orig_tweet = d["orig_tweet"]
@@ -152,7 +144,13 @@ class PredictionManager:
         return all_outputs
 
     def run_inference(self, data):
-        self.logger.info("Received " + str(data) + " for inference--!!")
-        outputs_start, outputs_end, d = self.__predict(data)
-        result = self.__post_process(outputs_start, outputs_end, d)
-        return result
+        try:
+            self.logger.info("Received " + str(data) + " for inference--!!")
+            outputs_start, outputs_end, d = self.__predict(data)
+            result = self.__post_process(outputs_start, outputs_end, d)
+            return result
+
+        except BaseException as ex:
+            self.logger.error(message="Exception Occurred while prediction---!! " + str(ex))
+            return str(ex)
+

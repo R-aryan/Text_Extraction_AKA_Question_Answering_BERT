@@ -68,3 +68,9 @@
 [01-Aug-2021 : 21:17:06] INFO [root.info:27] INFO : Model Weights loaded Successfully--!!
 [01-Aug-2021 : 21:17:06] INFO [root.info:27] INFO : Received {'sentiment': 'negative', 'sentence': 'So hot today =_=  don`t like it and i hate my new timetable, having such a bad week'} for inference--!!
 [01-Aug-2021 : 21:17:25] INFO [root.info:27] INFO : Performing prediction on the given data.
+[02-Aug-2021 : 00:05:56] INFO [root.info:27] INFO : Loading Bert Base Uncased Model for text extraction.
+[02-Aug-2021 : 00:06:00] INFO [root.info:27] INFO : Bert Base Model Successfully Loaded.
+[02-Aug-2021 : 00:06:00] INFO [root.info:27] INFO : Loading Model trained Weights.
+[02-Aug-2021 : 00:06:02] INFO [root.info:27] INFO : Model Weights loaded Successfully--!!
+[02-Aug-2021 : 00:06:02] INFO [root.info:27] INFO : Received {'sentiment': 'negative', 'sentence': 'So hot today =_=  don`t like it and i hate my new timetable, having such a bad week'} for inference--!!
+[02-Aug-2021 : 00:06:02] INFO [root.info:27] INFO : Performing prediction on the given data.

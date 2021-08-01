@@ -67,3 +67,5 @@ class Settings:
     threshold = 0.3
 
     SPECIAL_TOKENS = ("[CLS]", "[SEP]")
+
+    kaggle_notebook = "https://www.kaggle.com/raryan/tweet-sentiment-extraction"
