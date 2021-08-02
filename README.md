@@ -23,6 +23,7 @@ Let's say we have a sentence
 - **I am feeling good** and the sentiment for this sentence is **positive**
 - The word/phrase which exemplifies the provided sentiment in this case is **good.**
 
+### Goal
 - So, the goal is to create a model which performs the above mentioned task.
 
 ### Columns
