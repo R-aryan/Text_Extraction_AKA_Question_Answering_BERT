@@ -16,9 +16,14 @@ Make sure, when parsing the CSV, to remove the beginning / ending quotes from th
 
 ### What am I predicting?
 
-You're attempting to predict the word or phrase from the tweet that exemplifies the provided sentiment. The word or phrase should include all characters within that span (i.e. including commas, spaces, etc.). The format is as follows:
+You're attempting to predict the word or phrase from the tweet that exemplifies the provided sentiment. The word or phrase should include all characters within that span (i.e. including commas, spaces, etc.)
 
-<id>,"<word or phrase that supports the sentiment>"
+### Example 
+Let's say we have a sentence 
+- **I am feeling good** and the sentiment for this sentence is **positive**
+- The word/phrase which exemplifies the provided sentiment in this case is **good.**
+
+- So, the goal is to create a model which performs the above mentioned task.
 
 ### Columns
 - textID - unique ID for each piece of text
