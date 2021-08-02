@@ -1,0 +1,109 @@
+[01-Aug-2021 : 20:20:43] INFO [root.info:27] INFO : Loading Bert Base Uncased Model for text extraction.
+[01-Aug-2021 : 20:20:51] INFO [root.info:27] INFO : Bert Base Model Successfully Loaded.
+[01-Aug-2021 : 20:20:56] INFO [root.info:27] INFO : Loading Model trained Weights.
+[01-Aug-2021 : 20:21:07] INFO [root.info:27] INFO : Model Weights loaded Successfully--!!
+[01-Aug-2021 : 20:22:46] INFO [root.info:27] INFO : Loading Bert Base Uncased Model for text extraction.
+[01-Aug-2021 : 20:22:49] INFO [root.info:27] INFO : Bert Base Model Successfully Loaded.
+[01-Aug-2021 : 20:22:49] INFO [root.info:27] INFO : Loading Model trained Weights.
+[01-Aug-2021 : 20:22:50] INFO [root.info:27] INFO : Model Weights loaded Successfully--!!
+[01-Aug-2021 : 20:22:59] INFO [root.info:27] INFO : Received {'sentiment': 'positive', 'sentence': ' You seem nice, you`re generous and you know your stuff'} for inference--!!
+[01-Aug-2021 : 20:23:11] INFO [root.info:27] INFO : Performing prediction on the given data.
+[01-Aug-2021 : 20:31:47] INFO [root.info:27] INFO : Loading Bert Base Uncased Model for text extraction.
+[01-Aug-2021 : 20:31:50] INFO [root.info:27] INFO : Bert Base Model Successfully Loaded.
+[01-Aug-2021 : 20:31:50] INFO [root.info:27] INFO : Loading Model trained Weights.
+[01-Aug-2021 : 20:31:51] INFO [root.info:27] INFO : Model Weights loaded Successfully--!!
+[01-Aug-2021 : 20:31:59] INFO [root.info:27] INFO : Received {'sentiment': 'positive', 'sentence': ' You seem nice, you`re generous and you know your stuff'} for inference--!!
+[01-Aug-2021 : 20:32:06] INFO [root.info:27] INFO : Performing prediction on the given data.
+[01-Aug-2021 : 20:36:22] INFO [root.info:27] INFO : Loading Bert Base Uncased Model for text extraction.
+[01-Aug-2021 : 20:36:25] INFO [root.info:27] INFO : Bert Base Model Successfully Loaded.
+[01-Aug-2021 : 20:36:25] INFO [root.info:27] INFO : Loading Model trained Weights.
+[01-Aug-2021 : 20:36:25] INFO [root.info:27] INFO : Model Weights loaded Successfully--!!
+[01-Aug-2021 : 20:36:32] INFO [root.info:27] INFO : Received {'sentiment': 'positive', 'sentence': ' You seem nice, you`re generous and you know your stuff'} for inference--!!
+[01-Aug-2021 : 20:36:35] INFO [root.info:27] INFO : Performing prediction on the given data.
+[01-Aug-2021 : 20:39:45] INFO [root.info:27] INFO : Loading Bert Base Uncased Model for text extraction.
+[01-Aug-2021 : 20:39:48] INFO [root.info:27] INFO : Bert Base Model Successfully Loaded.
+[01-Aug-2021 : 20:39:48] INFO [root.info:27] INFO : Loading Model trained Weights.
+[01-Aug-2021 : 20:39:48] INFO [root.info:27] INFO : Model Weights loaded Successfully--!!
+[01-Aug-2021 : 20:39:57] INFO [root.info:27] INFO : Received {'sentiment': 'positive', 'sentence': ' You seem nice, you`re generous and you know your stuff'} for inference--!!
+[01-Aug-2021 : 20:40:06] INFO [root.info:27] INFO : Performing prediction on the given data.
+[01-Aug-2021 : 20:41:03] INFO [root.info:27] INFO : Loading Bert Base Uncased Model for text extraction.
+[01-Aug-2021 : 20:41:05] INFO [root.info:27] INFO : Bert Base Model Successfully Loaded.
+[01-Aug-2021 : 20:41:05] INFO [root.info:27] INFO : Loading Model trained Weights.
+[01-Aug-2021 : 20:41:06] INFO [root.info:27] INFO : Model Weights loaded Successfully--!!
+[01-Aug-2021 : 20:41:06] INFO [root.info:27] INFO : Received {'sentiment': 'positive', 'sentence': ' You seem nice, you`re generous and you know your stuff'} for inference--!!
+[01-Aug-2021 : 20:41:12] INFO [root.info:27] INFO : Performing prediction on the given data.
+[01-Aug-2021 : 20:42:28] INFO [root.info:27] INFO : Loading Bert Base Uncased Model for text extraction.
+[01-Aug-2021 : 20:42:31] INFO [root.info:27] INFO : Bert Base Model Successfully Loaded.
+[01-Aug-2021 : 20:42:31] INFO [root.info:27] INFO : Loading Model trained Weights.
+[01-Aug-2021 : 20:42:31] INFO [root.info:27] INFO : Model Weights loaded Successfully--!!
+[01-Aug-2021 : 20:42:31] INFO [root.info:27] INFO : Received {'sentiment': 'positive', 'sentence': ' You seem nice, you`re generous and you know your stuff'} for inference--!!
+[01-Aug-2021 : 20:42:35] INFO [root.info:27] INFO : Performing prediction on the given data.
+[01-Aug-2021 : 20:45:31] INFO [root.info:27] INFO : Loading Bert Base Uncased Model for text extraction.
+[01-Aug-2021 : 20:45:34] INFO [root.info:27] INFO : Bert Base Model Successfully Loaded.
+[01-Aug-2021 : 20:45:34] INFO [root.info:27] INFO : Loading Model trained Weights.
+[01-Aug-2021 : 20:45:34] INFO [root.info:27] INFO : Model Weights loaded Successfully--!!
+[01-Aug-2021 : 20:45:34] INFO [root.info:27] INFO : Received {'sentiment': 'positive', 'sentence': ' You seem nice, you`re generous and you know your stuff'} for inference--!!
+[01-Aug-2021 : 20:45:39] INFO [root.info:27] INFO : Performing prediction on the given data.
+[01-Aug-2021 : 20:47:49] INFO [root.info:27] INFO : Loading Bert Base Uncased Model for text extraction.
+[01-Aug-2021 : 20:47:52] INFO [root.info:27] INFO : Bert Base Model Successfully Loaded.
+[01-Aug-2021 : 20:47:52] INFO [root.info:27] INFO : Loading Model trained Weights.
+[01-Aug-2021 : 20:47:52] INFO [root.info:27] INFO : Model Weights loaded Successfully--!!
+[01-Aug-2021 : 20:47:53] INFO [root.info:27] INFO : Received {'sentiment': 'positive', 'sentence': ' You seem nice, you`re generous and you know your stuff'} for inference--!!
+[01-Aug-2021 : 20:47:55] INFO [root.info:27] INFO : Performing prediction on the given data.
+[01-Aug-2021 : 21:12:45] INFO [root.info:27] INFO : Loading Bert Base Uncased Model for text extraction.
+[01-Aug-2021 : 21:12:48] INFO [root.info:27] INFO : Bert Base Model Successfully Loaded.
+[01-Aug-2021 : 21:12:48] INFO [root.info:27] INFO : Loading Model trained Weights.
+[01-Aug-2021 : 21:12:50] INFO [root.info:27] INFO : Model Weights loaded Successfully--!!
+[01-Aug-2021 : 21:12:50] INFO [root.info:27] INFO : Received {'sentiment': 'positive', 'sentence': ' You seem nice, you`re generous and you know your stuff'} for inference--!!
+[01-Aug-2021 : 21:12:52] INFO [root.info:27] INFO : Performing prediction on the given data.
+[01-Aug-2021 : 21:13:40] INFO [root.info:27] INFO : Loading Bert Base Uncased Model for text extraction.
+[01-Aug-2021 : 21:13:43] INFO [root.info:27] INFO : Bert Base Model Successfully Loaded.
+[01-Aug-2021 : 21:13:43] INFO [root.info:27] INFO : Loading Model trained Weights.
+[01-Aug-2021 : 21:13:44] INFO [root.info:27] INFO : Model Weights loaded Successfully--!!
+[01-Aug-2021 : 21:13:44] INFO [root.info:27] INFO : Received {'sentiment': 'positive', 'sentence': ' that`s great!! weee!! visitors!'} for inference--!!
+[01-Aug-2021 : 21:13:47] INFO [root.info:27] INFO : Performing prediction on the given data.
+[01-Aug-2021 : 21:17:03] INFO [root.info:27] INFO : Loading Bert Base Uncased Model for text extraction.
+[01-Aug-2021 : 21:17:06] INFO [root.info:27] INFO : Bert Base Model Successfully Loaded.
+[01-Aug-2021 : 21:17:06] INFO [root.info:27] INFO : Loading Model trained Weights.
+[01-Aug-2021 : 21:17:06] INFO [root.info:27] INFO : Model Weights loaded Successfully--!!
+[01-Aug-2021 : 21:17:06] INFO [root.info:27] INFO : Received {'sentiment': 'negative', 'sentence': 'So hot today =_=  don`t like it and i hate my new timetable, having such a bad week'} for inference--!!
+[01-Aug-2021 : 21:17:25] INFO [root.info:27] INFO : Performing prediction on the given data.
+[02-Aug-2021 : 00:05:56] INFO [root.info:27] INFO : Loading Bert Base Uncased Model for text extraction.
+[02-Aug-2021 : 00:06:00] INFO [root.info:27] INFO : Bert Base Model Successfully Loaded.
+[02-Aug-2021 : 00:06:00] INFO [root.info:27] INFO : Loading Model trained Weights.
+[02-Aug-2021 : 00:06:02] INFO [root.info:27] INFO : Model Weights loaded Successfully--!!
+[02-Aug-2021 : 00:06:02] INFO [root.info:27] INFO : Received {'sentiment': 'negative', 'sentence': 'So hot today =_=  don`t like it and i hate my new timetable, having such a bad week'} for inference--!!
+[02-Aug-2021 : 00:06:02] INFO [root.info:27] INFO : Performing prediction on the given data.
+[02-Aug-2021 : 00:10:38] INFO [root.info:27] INFO : Loading Bert Base Uncased Model for text extraction.
+[02-Aug-2021 : 00:10:42] INFO [root.info:27] INFO : Bert Base Model Successfully Loaded.
+[02-Aug-2021 : 00:10:42] INFO [root.info:27] INFO : Loading Model trained Weights.
+[02-Aug-2021 : 00:10:44] INFO [root.info:27] INFO : Model Weights loaded Successfully--!!
+[02-Aug-2021 : 00:10:44] INFO [werkzeug._log:113]  * Running on http://localhost:8080/ (Press CTRL+C to quit)
+[02-Aug-2021 : 00:11:00] INFO [root.info:27] INFO : POST request received:http://localhost:8080/text_extraction/api/v1/predict
+[02-Aug-2021 : 00:11:09] INFO [root.info:27] INFO : Received {'sentence': 'So hot today I don`t like it and i hate my new timetable, having such a bad week', 'sentiment': 'negative'} for inference--!!
+[02-Aug-2021 : 00:11:09] INFO [root.info:27] INFO : Performing prediction on the given data.
+[02-Aug-2021 : 00:11:09] INFO [root.info:27] INFO : Response ['so hot today i don ` t like it and i hate my new'] returned for input {'sentence': 'So hot today I don`t like it and i hate my new timetable, having such a bad week', 'sentiment': 'negative'} successfully--!!
+[02-Aug-2021 : 00:11:16] INFO [root.info:27] INFO : Request processed successfully--!!
+[02-Aug-2021 : 00:11:17] INFO [werkzeug._log:113] 127.0.0.1 - - [02/Aug/2021 00:11:17] "[37mPOST /text_extraction/api/v1/predict HTTP/1.1[0m" 200 -
+[02-Aug-2021 : 00:14:38] INFO [root.info:27] INFO : Loading Bert Base Uncased Model for text extraction.
+[02-Aug-2021 : 00:14:43] INFO [root.info:27] INFO : Bert Base Model Successfully Loaded.
+[02-Aug-2021 : 00:14:43] INFO [root.info:27] INFO : Loading Model trained Weights.
+[02-Aug-2021 : 00:14:45] INFO [root.info:27] INFO : Model Weights loaded Successfully--!!
+[02-Aug-2021 : 00:14:45] INFO [werkzeug._log:113]  * Running on http://localhost:8080/ (Press CTRL+C to quit)
+[02-Aug-2021 : 00:16:38] INFO [root.info:27] INFO : POST request received:http://localhost:8080/text_extraction/api/v1/predict
+[02-Aug-2021 : 00:16:42] INFO [root.info:27] INFO : Received {'sentence': 'So hot today I don`t like it and i hate my new timetable, having such a bad week', 'sentiment': 'negative'} for inference--!!
+[02-Aug-2021 : 00:16:42] INFO [root.info:27] INFO : Performing prediction on the given data.
+[02-Aug-2021 : 00:16:43] INFO [root.info:27] INFO : Response ['so hot today i don ` t like it and i hate my new'] returned for input {'sentence': 'So hot today I don`t like it and i hate my new timetable, having such a bad week', 'sentiment': 'negative'} successfully--!!
+[02-Aug-2021 : 00:16:43] INFO [root.info:27] INFO : Request processed successfully--!!
+[02-Aug-2021 : 00:16:43] INFO [werkzeug._log:113] 127.0.0.1 - - [02/Aug/2021 00:16:43] "[37mPOST /text_extraction/api/v1/predict HTTP/1.1[0m" 200 -
+[02-Aug-2021 : 00:18:58] INFO [root.info:27] INFO : Loading Bert Base Uncased Model for text extraction.
+[02-Aug-2021 : 00:19:01] INFO [root.info:27] INFO : Bert Base Model Successfully Loaded.
+[02-Aug-2021 : 00:19:01] INFO [root.info:27] INFO : Loading Model trained Weights.
+[02-Aug-2021 : 00:19:02] INFO [root.info:27] INFO : Model Weights loaded Successfully--!!
+[02-Aug-2021 : 00:19:03] INFO [werkzeug._log:113]  * Running on http://localhost:8080/ (Press CTRL+C to quit)
+[02-Aug-2021 : 00:19:08] INFO [root.info:27] INFO : POST request received:http://localhost:8080/text_extraction/api/v1/predict
+[02-Aug-2021 : 00:19:08] INFO [root.info:27] INFO : Received {'sentence': 'So hot today I don`t like it and i hate my new timetable, having such a bad week', 'sentiment': 'negative'} for inference--!!
+[02-Aug-2021 : 00:19:08] INFO [root.info:27] INFO : Performing prediction on the given data.
+[02-Aug-2021 : 00:19:09] INFO [root.info:27] INFO : Response ['so hot today i don ` t like it and i hate my new'] returned for input {'sentence': 'So hot today I don`t like it and i hate my new timetable, having such a bad week', 'sentiment': 'negative'} successfully--!!
+[02-Aug-2021 : 00:19:09] INFO [root.info:27] INFO : Request processed successfully--!!
+[02-Aug-2021 : 00:19:09] INFO [werkzeug._log:113] 127.0.0.1 - - [02/Aug/2021 00:19:09] "[37mPOST /text_extraction/api/v1/predict HTTP/1.1[0m" 200 -
