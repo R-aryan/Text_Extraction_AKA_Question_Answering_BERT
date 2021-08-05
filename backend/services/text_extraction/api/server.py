@@ -39,7 +39,7 @@ class Server:
         # self.app.register_error_handler(Exception, global_handle_error)
         # self.app.register_error_handler(DoesNotExist, does_not_exist_handle_error)
         # self.app.run(port=8080, use_reloader=False)
-        self.app.run(host='localhost', port=8080, use_reloader=False)
+        self.app.run(host='0.0.0.0', port=8080, use_reloader=False)
 
 
 server = Server.getInstance()
