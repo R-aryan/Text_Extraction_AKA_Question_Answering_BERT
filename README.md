@@ -5,7 +5,7 @@ Performing Text Extraction also known as Question-Answering using BERT,and servi
 - End to End NLP  Text Extraction Probelm.
 - The Kaggle dataset can be found Here [Click Here](https://www.kaggle.com/c/tweet-sentiment-extraction/data)
 
-####  Steps to run the project [Click Here](https://github.com/R-aryan/Text_Extraction_AKA_Question_Answering_BERT/blob/develop/backend/services/text_extraction/README.md)
+####  Steps to run the project [Click Here](https://github.com/R-aryan/Text_Extraction_AKA_Question_Answering_BERT/blob/main/backend/services/text_extraction/README.md)
 
 ### Dataset Description
 
