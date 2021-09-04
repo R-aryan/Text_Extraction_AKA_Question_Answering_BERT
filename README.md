@@ -33,4 +33,14 @@ Let's say we have a sentence
 - selected_text - [train only] the text that supports the tweet's sentiment
 
 
+### Following are the screenshots for the sample **request** and sample **response.**
+
+- Request sample
+
+![Sample request](https://github.com/R-aryan/Text_Extraction_AKA_Question_Answering_BERT/blob/main/msc/sample_request.png)
+  <br>
+  <br>
+- Response Sample
+
+![Sample response](https://github.com/R-aryan/Text_Extraction_AKA_Question_Answering_BERT/blob/main/msc/sample_response.png)
  
