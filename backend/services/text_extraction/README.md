@@ -22,13 +22,13 @@ Performing Text Extraction also known as Question-Answering using BERT,and servi
 - You can send the POST request at this URL - **localhost:8080/text_extraction/api/v1/predict** (you can find the declaration of endpoint under **backend/services/text_extraction/api/__init__.py** )
 - You can also see the logs under **(backend/services/text_extraction/logs)** directory.
 
-Following are the screenshots for the sample **request** and sample **response.**
+### Following are the screenshots for the sample **request** and sample **response.**
 
 - Request sample
 
-![Sample request](https://github.com/R-aryan/Text_Extraction_AKA_Question_Answering_BERT/blob/develop/msc/sample_request.png)
+![Sample request](https://github.com/R-aryan/Text_Extraction_AKA_Question_Answering_BERT/blob/main/msc/sample_request.png)
   <br>
   <br>
 - Response Sample
 
-![Sample response](https://github.com/R-aryan/Text_Extraction_AKA_Question_Answering_BERT/blob/develop/msc/sample_response.png)
+![Sample response](https://github.com/R-aryan/Text_Extraction_AKA_Question_Answering_BERT/blob/main/msc/sample_response.png)
