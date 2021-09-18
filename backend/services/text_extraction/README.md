@@ -19,7 +19,7 @@ Performing Text Extraction also known as Question-Answering using BERT,and servi
 - Download the pre-trained weights from [here](https://drive.google.com/file/d/1uzDUH5J6kq9uQzgCIujlnphgRbhktIc1/view?usp=sharing) and place it inside the weights folder(**backend/services/text_extraction/application/ai/weights/trained_weights**)
 - After setting up the environment: go to [**backend/services/text_extraction/api**](https://github.com/R-aryan/Text_Extraction_AKA_Question_Answering_BERT/tree/main/backend/services/text_extraction/api) and run **app.py**.
 - After running the above step the server will start.  
-- You can send the POST request at this URL - **localhost:8080/text_extraction/api/v1/predict** (you can find the declaration of endpoint under **backend/services/text_extraction/api/__init__.py** )
+- You can send the POST request at this URL - **localhost:8080/text_extraction/api/v1/predict** (you can find the declaration of endpoint under [**backend/services/text_extraction/api/__init__.py**](https://github.com/R-aryan/Text_Extraction_AKA_Question_Answering_BERT/blob/main/backend/services/text_extraction/api/__init__.py) )
 - You can also see the logs under **(backend/services/text_extraction/logs)** directory.
 
 ### Following are the screenshots for the sample **request** and sample **response.**
